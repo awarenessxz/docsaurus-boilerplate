@@ -1,0 +1,122 @@
+/* stylelint-disable docusaurus/copyright-header */
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: rgb(33, 175, 144);
+  --ifm-color-primary-darker: rgb(31, 165, 136);
+  --ifm-color-primary-darkest: rgb(26, 136, 112);
+  --ifm-color-primary-light: rgb(70, 203, 174);
+  --ifm-color-primary-lighter: rgb(102, 212, 189);
+  --ifm-color-primary-lightest: rgb(146, 224, 208);
+  --ifm-code-font-size: 95%;
+}
+
+.docusaurus-highlight-code-line {
+  background-color: rgb(72, 77, 91);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
+/* ******************************************************************************************************************
+ *
+ * Nav Bar Headers
+ *
+ ****************************************************************************************************************** */
+
+.navbar__items .react-toggle {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.header-link {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.header-link:hover {
+  opacity: 0.6;
+}
+
+.header-github-link:before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background: url("../../static/img/icon/github.svg")
+  no-repeat;
+}
+
+html[data-theme='dark'] .header-github-link:before {
+  background: url("../../static/img/icon/github-dark.svg")
+  no-repeat;
+}
+
+.header-grafana-link:before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background: url("../../static/img/icon/grafana.svg")
+  no-repeat;
+}
+
+.header-rabbitmq-link:before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background: url("../../static/img/icon/rabbitmq.svg")
+  no-repeat;
+}
+
+.header-confluence-link:before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background: url("../../static/img/icon/confluence.svg")
+  no-repeat;
+}
+
+.header-jira-link:before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background: url("../../static/img/icon/jira.svg")
+  no-repeat;
+}
+
+.header-jfrog-link:before {
+  content: '';
+  width: 43px;
+  height: 24px;
+  display: flex;
+  background: url("../../static/img/icon/jfrog.svg")
+  no-repeat;
+}
+
+.header-kubernetes-link:before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background: url("../../static/img/icon/kubernetes.svg")
+  no-repeat;
+}
+
+.header-s3-link:before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background: url("../../static/img/icon/aws-s3.svg")
+  no-repeat;
+}
