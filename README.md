@@ -5,19 +5,24 @@ for documenting software applications.
 
 ## Usage
 
-```console
-# Install packages
-yarn installv
+### Configuration
 
-# Local Development
-yarn start
+Refer to the following files to make configuration for the website.
+- [web-config.json](web-config.json)
+- [docusaurus.config.js](docusaurus.config.js)
 
-# Build 
-yarn build
+### Running the web
 
-# Deployment (If you are using Github pages for hosting, this command is convenient way to build the website and push to `gh-pages` branch
-GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
-```
+1. Install packages
+    - `yarn install`
+
+2. Start the web
+    - `yarn start`
+
+### Build and deploy
+
+- On Github pages - Google yourself
+- As a container
 
 ## Reference
 

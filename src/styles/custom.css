@@ -40,83 +40,53 @@
   padding-right: 10px;
 }
 
+.header-link:before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: flex;
+}
+
 .header-link:hover {
   opacity: 0.6;
 }
 
 .header-github-link:before {
-  content: '';
-  width: 24px;
-  height: 24px;
-  display: flex;
-  background: url("../../static/img/icon/github.svg")
-  no-repeat;
+  background: url("../../static/img/icon/github.svg") no-repeat;
 }
 
 html[data-theme='dark'] .header-github-link:before {
-  background: url("../../static/img/icon/github-dark.svg")
-  no-repeat;
+  background: url("../../static/img/icon/github-dark.svg") no-repeat;
 }
 
 .header-grafana-link:before {
-  content: '';
-  width: 24px;
-  height: 24px;
-  display: flex;
-  background: url("../../static/img/icon/grafana.svg")
-  no-repeat;
+  background: url("../../static/img/icon/grafana.svg") no-repeat;
 }
 
 .header-rabbitmq-link:before {
-  content: '';
-  width: 24px;
-  height: 24px;
-  display: flex;
-  background: url("../../static/img/icon/rabbitmq.svg")
-  no-repeat;
+  background: url("../../static/img/icon/rabbitmq.svg") no-repeat;
 }
 
 .header-confluence-link:before {
-  content: '';
-  width: 24px;
-  height: 24px;
-  display: flex;
-  background: url("../../static/img/icon/confluence.svg")
-  no-repeat;
+  background: url("../../static/img/icon/confluence.svg") no-repeat;
 }
 
 .header-jira-link:before {
-  content: '';
-  width: 24px;
-  height: 24px;
-  display: flex;
-  background: url("../../static/img/icon/jira.svg")
-  no-repeat;
+  background: url("../../static/img/icon/jira.svg") no-repeat;
 }
 
 .header-jfrog-link:before {
-  content: '';
-  width: 43px;
-  height: 24px;
-  display: flex;
-  background: url("../../static/img/icon/jfrog.svg")
-  no-repeat;
+  background: url("../../static/img/icon/jfrog.svg") no-repeat;
 }
 
 .header-kubernetes-link:before {
-  content: '';
-  width: 24px;
-  height: 24px;
-  display: flex;
-  background: url("../../static/img/icon/kubernetes.svg")
-  no-repeat;
+  background: url("../../static/img/icon/kubernetes.svg") no-repeat;
 }
 
 .header-s3-link:before {
-  content: '';
-  width: 24px;
-  height: 24px;
-  display: flex;
-  background: url("../../static/img/icon/aws-s3.svg")
-  no-repeat;
+  background: url("../../static/img/icon/aws-s3.svg") no-repeat;
+}
+
+.header-storybook-link:before {
+  background: url("../../static/img/icon/storybook.svg") no-repeat;
 }

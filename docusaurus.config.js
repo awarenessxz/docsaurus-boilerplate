@@ -1,6 +1,8 @@
+const appConfig = require("./web-config.json");
+
 module.exports = {
   title: 'Development Documentation',
-  tagline: 'There is never a lack of good documentation',
+  tagline: 'Documentation to kick start developers with the team\'s project' ,
   url: 'https://devdoc.com',
   baseUrl: '/',
   plugins: ['my-loaders'], // custom loader
@@ -16,14 +18,15 @@ module.exports = {
       items: [
         { type: 'doc', docId: 'introduction/getting-started', label: 'Docs', position: 'left' },
         { to: '/api-reference', label: 'API', position: 'left' },
-        { href: 'https://github.com/facebook/docusaurus', position: 'right', className: 'header-link header-github-link', 'aria-label': 'GitHub repository'},
-        { href: 'https://github.com/facebook/docusaurus', position: 'right', className: 'header-link header-grafana-link', 'aria-label': 'Grafana Dashboard'},
-        { href: 'https://github.com/facebook/docusaurus', position: 'right', className: 'header-link header-rabbitmq-link', 'aria-label': 'RabbitMQ Console'},
-        { href: 'https://github.com/facebook/docusaurus', position: 'right', className: 'header-link header-s3-link', 'aria-label': 'S3 File Storage'},
-        { href: 'https://github.com/facebook/docusaurus', position: 'right', className: 'header-link header-kubernetes-link', 'aria-label': 'Kubernetes Platform'},
-        { href: 'https://github.com/facebook/docusaurus', position: 'right', className: 'header-link header-jfrog-link', 'aria-label': 'Artifactory'},
-        { href: 'https://github.com/facebook/docusaurus', position: 'right', className: 'header-link header-confluence-link', 'aria-label': 'Wiki Workspace'},
-        { href: 'https://github.com/facebook/docusaurus', position: 'right', className: 'header-link header-jira-link', 'aria-label': 'Sprint Planning Dashboard'},
+        { href: appConfig.links.github, position: 'right', className: 'header-link header-github-link', 'aria-label': 'GitHub repository'},
+        { href: appConfig.links.storybook, position: 'right', className: 'header-link header-storybook-link', 'aria-label': 'Component Library'},
+        { href: appConfig.links.grafana, position: 'right', className: 'header-link header-grafana-link', 'aria-label': 'Grafana Dashboard'},
+        { href: appConfig.links.rabbitmq, position: 'right', className: 'header-link header-rabbitmq-link', 'aria-label': 'RabbitMQ Console'},
+        { href: appConfig.links.s3filestorage, position: 'right', className: 'header-link header-s3-link', 'aria-label': 'S3 File Storage'},
+        { href: appConfig.links.kubernetes, position: 'right', className: 'header-link header-kubernetes-link', 'aria-label': 'Kubernetes Platform'},
+        { href: appConfig.links.artifactory, position: 'right', className: 'header-link header-jfrog-link', 'aria-label': 'Artifactory'},
+        { href: appConfig.links.confluence, position: 'right', className: 'header-link header-confluence-link', 'aria-label': 'Wiki Workspace'},
+        { href: appConfig.links.jira, position: 'right', className: 'header-link header-jira-link', 'aria-label': 'Sprint Planning Dashboard'},
       ],
     },
     footer: {
@@ -49,7 +52,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} DevDocs. Built with Docusaurus and Swagger UI`,
     },
   },
   presets: [
@@ -59,7 +62,7 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/edit/master/website/',
+          editUrl: 'https://github.com/awarenessxz/docsaurus-boilerplate/edit/main/',
         },
         theme: {
           customCss: require.resolve('./src/styles/custom.css'),
