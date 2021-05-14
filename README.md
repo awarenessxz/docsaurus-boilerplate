@@ -32,12 +32,21 @@ Refer to the following files to make configuration for the website.
 ### Running the web
 
 1. Install packages
-    - `yarn install`
+    ```bash
+    yarn install
+    ```
 
 2. Start the web
-    - `yarn start`
-    - `http://localhost:3000`
-
+    ```bash
+    yarn start
+    Browse to http://localhost:3000
+   
+    # To test functionality of search (only available in production build)
+    yarn build
+    npx http-server ./build
+    Browse to http://localhost:8080
+    ```
+   
 ### Build and deploy
 
 - On Github pages - Google yourself

@@ -5,7 +5,7 @@ module.exports = {
   tagline: 'Documentation to kick start developers with the team\'s project' ,
   url: 'https://devdoc.com',
   baseUrl: '/',
-  plugins: ['my-loaders'], // custom loader
+  plugins: ['my-loaders', require.resolve('docusaurus-lunr-search')],
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
