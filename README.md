@@ -47,10 +47,10 @@ Refer to the following files to make configuration for the website.
     Browse to http://localhost:8080
     ```
    
-### Build and deploy
+### Build and Publish
 
 - On Github pages - Google yourself
-- As a container
+- As a container (Manually)
     ```bash 
     # Build Docker Image
     docker build -t docusaurus_swagger .
@@ -67,6 +67,14 @@ Refer to the following files to make configuration for the website.
     # Clean up
     docker rm -f devdocs
     docker rmi docusaurus_swagger
+    ```
+- Using Kaniko for CI/CD
+    ```
+    # Testing 
+    docker run -v <PATH_TO_PROJECT>:/workspace gcr.io/kaniko-project/executor:debug --dockerfile /workspace/Dockerfile --no-push --context /workspace
+
+    # Gitlab CI/CD
+    Requires Authentication...
     ```
 
 ## Reference
