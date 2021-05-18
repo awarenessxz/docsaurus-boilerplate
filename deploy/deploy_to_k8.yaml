@@ -1,0 +1,96 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: my-namespace
+  name: devdocs
+  labels:
+    app.kubernetes.io/name: devdocs
+    app.kubernetes.io/part-of: something
+    app.kubernetes.io/type: deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: devdocs
+      app.kubernetes.io/part-of: something
+      app.kubernetes.io/type: pod
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: devdocs
+        app.kubernetes.io/part-of: something
+        app.kubernetes.io/type: pod
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: devdocs
+          image: devdocs:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            failureThreshold: 3
+            initialDelaySeconds: 5
+            periodSeconds: 2
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            failureThreshold: 3
+            initialDelaySeconds: 5
+            periodSeconds: 2
+          resources:
+            limits:
+              memory: 1Gi
+            request:
+              memory: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: devdocs-svc
+  namespace: my-namespace
+  labels:
+    app.kubernetes.io/name: devdocs
+    app.kubernetes.io/part-of: something
+    app.kubernetes.io/type: service
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: devdocs
+    app.kubernetes.io/part-of: something
+    app.kubernetes.io/type: pod
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  labels:
+    app.kubernetes.io/name: devdocs
+    app.kubernetes.io/part-of: something
+    app.kubernetes.io/type: ingress
+  name: devdocs-ing
+  namespace: my-namespace
+spec:
+  tls:
+    - hosts:
+        - devdocs.something.com
+      secreteName: tls-devdocs
+  rules:
+    - host: devdocs.soemthing.com
+      http:
+        paths:
+          - backend:
+              serviceName: devdocs-svc
+              servicePort: 80
+            path: /
+---

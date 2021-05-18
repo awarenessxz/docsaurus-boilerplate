@@ -8,7 +8,7 @@ API Documentation using swagger-ui-react which loads swagger.json from API endpo
 - [Usage](#usage)
     - [Configuration](#configuration)
     - [Start the web](#running-the-web)
-    - [Build and deploy](#build-and-deploy)
+    - [Build, publish and deploy](#build-publish-and-deploy)
 - [Reference](#reference)
 
 ## Screenshot
@@ -47,28 +47,54 @@ Refer to the following files to make configuration for the website.
     Browse to http://localhost:8080
     ```
    
-### Build and deploy
+### Build, publish and deploy
 
 - On Github pages - Google yourself
 - As a container
-    ```bash 
-    # Build Docker Image
-    docker build -t docusaurus_swagger .
-    
-    # Remove intermediate build files
-    docker image prune --filter label=stage=builder
-  
-    # Start an instance
-    docker run -p 8080:80 --name devdocs -d docusaurus_swagger
-  
-    # Browse the website (http)
-    http://localhost:8080
-  
-    # Clean up
-    docker rm -f devdocs
-    docker rmi docusaurus_swagger
-    ```
-
+    - Building Stage  
+        ```bash 
+        # Build Docker Image
+        docker build --build-arg BUILD_ENV=development -t docusaurus_swagger:<VERSION_TAG> .
+        
+        # Remove intermediate build files
+        docker image prune --filter label=stage=builder
+      
+        # Start an instance
+        docker run -p 8080:80 --name devdocs -d docusaurus_swagger:<VERSION_TAG>
+      
+        # Browse the website (http)
+        http://localhost:8080
+      
+        # Clean up
+        docker rm -f devdocs
+        docker rmi docusaurus_swagger
+        ```
+    - Publishing Stage
+        - Using Docker Commands
+            ```bash
+            docker login 
+            docker push devdocs
+            ```
+        - Using Kaniko
+            - Encode your Artifactory username:passwor dusing a base64 encoder
+                - `echo -n "artifactory_user:artifactory_pass" | base64 -w 0`
+            - Replace **user:password** inside **deploy/config.json** with the base64 encoded value
+            - Replace **DOCKER_REG_URL** with `docker.artifact.eden.dot`
+            - Run the command (example below)  
+                ```bash
+                docker run \
+                    -v /path/to/project:/workspace \
+                    -v /path/to/project/deploy/config.json:/kaniko/.docker/config.json:ro \
+                    -v /path/to/ca.some.crt:/kaniko/ssl/certs/ca.some.crt \
+                    gcr.io/kaniko-project/executor:debug
+                    --dockerfile /workspace/Dockerfile
+                    --build-arg BUILD_ENV=development
+                    --context /workspace
+                    --destination devdocs:<VERSION_TAG>
+                ```
+     - Deploying to kubernetes
+        - `kubectl apply -f deploy/deploy_to_k8.yaml` 
+       
 ## Reference
 
 - Webpack Issues
