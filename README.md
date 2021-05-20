@@ -76,10 +76,10 @@ Refer to the following files to make configuration for the website.
             docker push devdocs
             ```
         - Using Kaniko
-            - Encode your Artifactory username:passwor dusing a base64 encoder
-                - `echo -n "artifactory_user:artifactory_pass" | base64 -w 0`
+            - Encode your Registry username:password dusing a base64 encoder
+                - `echo -n "registry_user:registry_pass" | base64 -w 0`
             - Replace **user:password** inside **deploy/config.json** with the base64 encoded value
-            - Replace **DOCKER_REG_URL** with `docker.artifact.eden.dot`
+            - Replace **DOCKER_REG_URL** with `registry_url`
             - Run the command (example below)  
                 ```bash
                 docker run \
